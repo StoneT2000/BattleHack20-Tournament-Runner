@@ -10,7 +10,7 @@ To start, make sure you have [npm](https://npmjs.org) and run the following
 npm install
 ```
 
-Make sure to install `ts-node` by running the falling
+Make sure to install `ts-node` by running the following
 
 ```
 npm install -g ts-node
