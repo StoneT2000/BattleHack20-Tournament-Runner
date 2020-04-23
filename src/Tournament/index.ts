@@ -169,18 +169,25 @@ export abstract class Tournament {
         let matchID = this.matchID;
         this.matchID++;
         this.matches.set(matchID, {
-          agents: [{name:playerFiles[0]}, {name:playerFiles[1]}]
+          agents: [{name:players[0].tournamentID.name}, {name:players[1].tournamentID.name}]
         });
-
-        const COMMAND = `./run.sh ${players[0].file} ${players[1].file} ${randomSeed} ${replayName}`
+        let boardsize = 16
+        let maxrounds = 500
+        if (matchConfigs.maxrounds) {
+          maxrounds = matchConfigs.maxrounds
+        }
+        if (matchConfigs.boardsize) {
+          boardsize = matchConfigs.boardsize
+        }
+        const COMMAND = `./run.sh ${players[0].file} ${players[1].file} ${randomSeed} ${replayName} ${boardsize} ${maxrounds}`
         //players[0].file, players[1].file, '--delay=0', '--debug=true', '--raw-text'
         let gameProcess = 
           exec(COMMAND,  {
           }).on('error', function( err ){ reject(err) });
-        gameProcess.stdout.on('readable', () => {
-          let data: string[];
-          while (data = gameProcess.stdout.read()) {
-            let strs = `${data}`.split('\n');
+        gameProcess.stdout.on('data', (chunk) => {
+          // let data: string[];
+          // while (data = gameProcess.stdout.read()) {
+            let strs = `${chunk}`.split('\n');
             // this.log.systemIO(`stdout: ${strs}`);
             for (let i = 0; i < strs.length - 1; i++) {
               if (strs[i] == 'Team.WHITE wins!') {
@@ -206,7 +213,7 @@ export abstract class Tournament {
                 resolve({results: {ranks: [{rank: 1, agentID: 0}, {rank: 1, agentID: 1}]}, mapAgentIDtoTournamentID: idmap});
               }
             }
-          };
+          // };
           gameProcess.on('close', (code) => {
             this.log.systemIO(`match exited with code ${code}`);
           });

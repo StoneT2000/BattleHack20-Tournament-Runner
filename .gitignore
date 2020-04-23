@@ -12,3 +12,4 @@ tests/run.*.ts
 *.class
 tests/ts-kit/**/*.js
 .npmrc
+bots/

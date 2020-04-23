@@ -52,7 +52,7 @@ def run():
 
     # count the farthest up we are on a lane
     furthestRow = []
-    closestDistToEnd = 16
+    closestDistToEnd = board_size
 
     lanesTaken = 0
 
@@ -64,7 +64,7 @@ def run():
         if forward == 1:
             furthestRow.append(-1)
         else:
-            furthestRow.append(16)
+            furthestRow.append(board_size)
         if not (endRow[i] == team):
             attackableLanes.add(i)
             strictAttackableLanes.add(i)

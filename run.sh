@@ -3,6 +3,8 @@ w=$1
 b=$2
 seed=$3
 replay_name=$4
+board_size=$5
+max_rounds=$6
 replay_path="replays/${replay_name}.txt"
 echo Team 1: $w > $replay_path
 echo Team 2: $b >> $replay_path
@@ -18,5 +20,5 @@ echo Requires: RestrictedPython >> $replay_path
 echo Required-by:  >> $replay_path
 
 
-python3 run.py $w $b --seed $seed --delay 0 --raw-text >> $replay_path
+python3 run.py $w $b --seed $seed --delay 0 --raw-text --board-size $board_size --max-rounds $max_rounds >> $replay_path
 echo `awk '/./{line=$0} END{print line}' $replay_path`
