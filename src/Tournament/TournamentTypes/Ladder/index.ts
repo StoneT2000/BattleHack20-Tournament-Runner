@@ -263,9 +263,6 @@ export class LadderTournament extends Tournament {
         });
         break;
     }
-    if (this.configs.consoleDisplay) {
-      this.printTournamentStatus();
-    }
   }
   /**
    * Intended Matchmaking Algorithm Heuristics:
@@ -342,23 +339,6 @@ export class LadderTournament extends Tournament {
    * @param matchInfo 
    */
   private async handleMatch(matchInfo: Array<Player>) {
-    if (this.configs.consoleDisplay) {
-      this.printTournamentStatus();
-      console.log();
-      console.log('Current Matches: ' + (this.matches.size + 1));
-      this.matches.forEach((match) => {
-        let names = [];
-        match.agents.forEach((agent) => {
-          names.push(agent.name);
-        });
-        console.log(names);
-      });
-      let names = [];
-      matchInfo.forEach((player) => {
-        names.push(player.tournamentID.name);
-      });
-      console.log(names);
-    }
 
     this.log.detail('Running match - Competitors: ', matchInfo.map((player) => {return player.tournamentID.name}));
     
@@ -415,19 +395,6 @@ export class LadderTournament extends Tournament {
       (<RANK_SYSTEM.TRUESKILL.RankState>currentStats.rankState).rating = newRatings[i][0];
       this.state.playerStats.set(tourneyID, currentStats);
     })
-
-    if (this.configs.consoleDisplay) {
-      this.printTournamentStatus();
-      console.log();
-      console.log('Current Matches: ' + (this.matches.size));
-      this.matches.forEach((match) => {
-        let names = [];
-        match.agents.forEach((agent) => {
-          names.push(agent.name);
-        });
-        console.log(names);
-      });
-    }
   }
 
   private printTournamentInfo() {
@@ -461,19 +428,6 @@ export class LadderTournament extends Tournament {
 
     // re adjust rankings
     this.elo.rate(ratingsToChange, ranks);
-
-    if (this.configs.consoleDisplay) {
-      this.printTournamentStatus();
-      console.log();
-      console.log('Current Matches: ' + (this.matches.size));
-      this.matches.forEach((match) => {
-        let names = [];
-        match.agents.forEach((agent) => {
-          names.push(agent.name);
-        });
-        console.log(names);
-      });
-    }
 
   }
 }
