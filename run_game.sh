@@ -20,5 +20,5 @@ echo Requires: RestrictedPython >> $replay_path
 echo Required-by:  >> $replay_path
 
 
-python3 run.py $w $b --seed $seed --delay 0 --raw-text --board-size $board_size --max-rounds $max_rounds >> $replay_path
+python3 run_game.py $w $b --seed $seed --delay 0 --raw-text --board-size $board_size --max-rounds $max_rounds >> $replay_path
 echo `awk '/./{line=$0} END{print line}' $replay_path`

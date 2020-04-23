@@ -179,7 +179,7 @@ export abstract class Tournament {
         if (matchConfigs.boardsize) {
           boardsize = matchConfigs.boardsize
         }
-        const COMMAND = `./run.sh ${players[0].file} ${players[1].file} ${randomSeed} ${replayName} ${boardsize} ${maxrounds}`
+        const COMMAND = `./run_game.sh ${players[0].file} ${players[1].file} ${randomSeed} ${replayName} ${boardsize} ${maxrounds}`
         //players[0].file, players[1].file, '--delay=0', '--debug=true', '--raw-text'
         let gameProcess = 
           exec(COMMAND,  {
@@ -209,7 +209,7 @@ export abstract class Tournament {
               else {
                 this.matches.delete(matchID);
                 // game errored, throw out game 
-                this.log.error("GAME ERRORED OUT. MARK AS TIE");
+                this.log.error("GAME ERRORED OUT. Marked as a tie");
                 resolve({results: {ranks: [{rank: 1, agentID: 0}, {rank: 1, agentID: 1}]}, mapAgentIDtoTournamentID: idmap});
               }
             }

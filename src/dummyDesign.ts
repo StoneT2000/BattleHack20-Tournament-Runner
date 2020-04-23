@@ -1,4 +1,4 @@
-import * as Dimension from './src';
+import * as Dimension from '.';
 
 export default class DummyDesignClass extends Dimension.Design {
   async initialize() {

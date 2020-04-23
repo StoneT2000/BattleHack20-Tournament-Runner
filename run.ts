@@ -1,6 +1,6 @@
 import * as Dimension from './src';
+import DummyDesignClass from './src/dummyDesign';
 let Match = Dimension.Match;
-import DummyDesignClass from './dummyDesign';
 
 // the framework was intended to use something else and requires this design thing, ignore this part
 let DummyDesign = new DummyDesignClass('Battle Hack!', {
@@ -10,13 +10,10 @@ let myDimension = Dimension.create(DummyDesign, {
   loggingLevel: Dimension.Logger.LEVEL.WARN,
 }); 
 
+// load your bots and their names
 let botList = [];
-// botList.push({file: './bots/bishop', name:'Bishop'});
-// botList.push({file: './bots/pawn', name:'Pawn'});
-// botList.push({file: './bots/rook', name:'Rook'});
-// botList.push({file: './bots/knight', name:'Knight'});
-botList.push({file: './bots/thequeen3v3', name:'Queen - Stone'});
-botList.push({file: './bots/syncbotv2', name:'Syncbot IDIOOT'});
+botList.push({file: './examplefuncsplayer', name:'Example 1'});
+botList.push({file: './examplefuncsplayer', name:'Example 2'});
 
 let BattlehackTourney = <Dimension.Tournament.Ladder.Tournament>(myDimension.createTournament(botList, {
     type: Dimension.Tournament.TOURNAMENT_TYPE.LADDER,
@@ -25,25 +22,19 @@ let BattlehackTourney = <Dimension.Tournament.Ladder.Tournament>(myDimension.cre
     name: 'BattleHack 2020 Trueskill Tournament',
     consoleDisplay: true,
     defaultMatchConfigs: {
-      // explanatory
       boardsize: 16,
       maxrounds: 500,
       loggingLevel: Dimension.Logger.LEVEL.NONE
     },
     agentsPerMatch: [2],
     tournamentConfigs: {
+       // max concurrent matches
+      maxConcurrentMatches: 1,
+      // max matches
+      maxTotalMatches: 1000
     },
     resultHandler: (result) => result
   }
 ));
-
-BattlehackTourney.setConfigs({
-  tournamentConfigs: {
-    // max concurrent matches
-    maxConcurrentMatches: 1,
-    // max matches
-    maxTotalMatches: 1000
-  }
-});
 
 BattlehackTourney.run();
