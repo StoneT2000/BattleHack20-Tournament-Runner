@@ -23,4 +23,4 @@ ts-node run.ts
 
 This will run 16 examplefuncsplayer against themselves in a trueskill tournament with 4 matches running simutaneously. Replays are automatically stored in the `replays/` folder.
 
-To run with other bots, read through `run.ts` for instructions.
+To run with other bots and configure match options and running options, read through `run.ts` for instructions.
