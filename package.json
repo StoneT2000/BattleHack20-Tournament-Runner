@@ -1,7 +1,7 @@
 {
-  "name": "dimensions-ai",
+  "name": "dimensions-ai battle hack version",
   "version": "1.1.0",
-  "description": "A generic, multi-level ai competition framework",
+  "description": "A generic, multi-level ai competition framework (configured for battlehack)",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
