@@ -2,7 +2,7 @@
 
 This is code for running your own Trueskill / ELO ranked tournament with bots from BattleHack 2020 hosted by [Battlecode](https://battlecode.org)
 
-This is essentially my [Dimensions](https://battlecode.org) framework wrapped around Battlecode.
+This is essentially my [Dimensions](https://github.com/stonet2000/dimensions) framework wrapped around Battlecode.
 
 To start, make sure you have [npm](https://npmjs.org) and run the following
 
