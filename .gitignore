@@ -1,0 +1,14 @@
+node_modules
+build
+lib
+*.log
+replays
+*.code-workspace
+coverage
+__pycache__
+tests/run.*.ts
+*.DS_Store
+*.out
+*.class
+tests/ts-kit/**/*.js
+.npmrc
